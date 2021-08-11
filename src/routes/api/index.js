@@ -4,7 +4,7 @@ import user from './user';
 
 const router = Router();
 
-router.get('/', (_, res) => res.send('Manage user from Excel file..'));
+router.get('/', (_, res) => res.send('User Management from an Excel file..'));
 router.use('/', auth);
 router.use('/', user);
 
