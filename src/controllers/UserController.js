@@ -1,23 +1,14 @@
 import excelToJson from 'convert-excel-to-json';
 import formidable from 'formidable';
-import errorHandler from '../helpers/errorHandler';
-import Joi from '@hapi/joi';
 
+import errorHandler from '../helpers/errorHandler';
 import db from '../database/models';
 import * as status from '../constants/httpStatusCodes';
 import * as successMessages from '../constants/successMessages';
 import * as errorMessages from '../constants/errorMessages';
-import { validateEmail } from '../helpers/validation/joi-schemas/newUser';
+import { schemaValidation } from '../helpers/validation/joi-schemas/userColumns';
 
 const { User } = db;
-
-const schemaValidation = Joi.object({
-    names: Joi.string().max(2).required(),
-    nid: Joi.string().max(3).required(),
-    phone: Joi.string().min(5).max(20).required(),
-    gender: Joi.string().valid('Male', 'Female'),
-    email: Joi.string().required().custom(validateEmail),
-});
 
 /**
  * a class to handle Data from Excel
@@ -33,12 +24,16 @@ export default class UserController {
         const form = formidable({ multiples: false });
 
         form.parse(req, async (err, fields, files) => {
+            console.log(`files.file.path`, files.file.path);
+
             const result = excelToJson({
                 sourceFile: files.file.path,
                 columnToKey: {
                     '*': '{{columnHeader}}',
                 },
             });
+
+            // console.log(`result`, result);
 
             if (result[Object.keys(result)[0]].length === 0) {
                 return res.status(status.HTTP_BAD_REQUEST).json({
@@ -50,6 +45,8 @@ export default class UserController {
             const users = result[Object.keys(result)[0]];
 
             users.shift();
+
+            // console.log(`users`, users);
 
             users.forEach((user) => {
                 const { error } = schemaValidation.validate(user, {
@@ -117,8 +114,6 @@ export default class UserController {
      */
     static async getAll(req, res) {
         const fetchAllUsers = await User.findAll();
-
-        console.log(`fetchAllUsers`, fetchAllUsers);
 
         return fetchAllUsers
             ? res.status(status.HTTP_OK).json({
