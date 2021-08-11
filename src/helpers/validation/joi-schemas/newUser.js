@@ -12,6 +12,11 @@ const emailValidator = (value, helpers) => {
     return checkEmail === true ? true : helpers?.message(checkEmail);
 };
 
+export const validateEmail = (value, helpers) => {
+    const checkEmail = validate.email(value, true);
+    return checkEmail === true ? true : helpers?.message(checkEmail);
+};
+
 const passwordValidator = (value, helpers) => {
     const checkPassword = validate.password(value, true);
     return checkPassword === true ? true : helpers?.message(checkPassword);

@@ -14,4 +14,6 @@ export const UNEXPECTED_ERROR = "oops, something went wrong";
 export const BAD_CREDENTIALS = "Incorrect Password";
 export const REQUIRED_FIELDS = "Please provide the required field";
 export const USER_NOT_FOUND = `sorry, user not found!!`;
+export const USERS_NOT_FOUND = `sorry, users not found!!`;
 export const EMAIL_ALREADY_USED = `email already used`;
+export const EMPTY_SHEET = 'The sheet your are trying to upload might be empty, please cross check.';

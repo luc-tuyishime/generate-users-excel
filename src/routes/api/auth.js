@@ -9,17 +9,16 @@ const router = Router();
 
 // Login User
 router.post(
-  '/auth/login',
-  joiValidator(schema.login),
-  errorHandlerAsync(AuthController.login)
+    '/auth/login',
+    joiValidator(schema.login),
+    errorHandlerAsync(AuthController.login)
 );
 
 // Create User
-router.post('/auth/signup', joiValidator(schema.newUser), errorHandlerAsync(AuthController.create));
-
-// Display User
-// router.get('/users/:id', verifyToken, checkInvalidToken, errorHandlerAsync(UserController.getOne));
-
-
+router.post(
+    '/auth/signup',
+    joiValidator(schema.newUser),
+    errorHandlerAsync(AuthController.create)
+);
 
 export default router;
