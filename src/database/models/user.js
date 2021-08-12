@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
             },
             names: {
                 type: new DataTypes.STRING(),
-                allowNull: true,
+                allowNull: false,
             },
             nid: {
                 type: new DataTypes.STRING(),
