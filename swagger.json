@@ -1,0 +1,304 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "User Management from Excel file",
+    "version": "1.0.0",
+    "title": "User Management",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:9000/",
+  "basePath": "api/v1",
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Users Authentication"
+    }  
+  ],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Authenticate a user",
+        "description": "Authenticate a user and send a token",
+        "operationId": "Login",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Credentials to be sent to authenticate a user",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": ["email", "password"],
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "user@domain.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "Test123!"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully authenticated"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Register a user",
+        "description": "Register a new user and send a activation email",
+        "operationId": "Signup",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Information to be sent to register a new user",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "firstName",
+                "lastName",
+                "username",
+                "email",
+                "phone",
+                "password"
+              ],
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                  },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account Successfully created"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "409": {
+            "description": "User already exist"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+  
+
+    "/upload": {
+      "post": {
+        "tags": ["users"],
+        "summary": "Upload Users",
+        "description": "Upload users from Excel file and save to DB",
+        "operationId": "RegisterUser",
+        "consumes": ["multipart/form-data"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "upfile",
+            "type": "file",
+            "description": "Information to be sent to upload users"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File Successfully uploaded"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "User not authorized to create an account"
+          },
+          "409": {
+            "description": "User already exist"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/users": {
+        "get": {
+          "tags": ["users"],
+          "summary": "Display Users",
+          "description": "Display the uploaded list with its validation failure for each record",
+          "operationId": "GetUser",
+          "produces": ["application/json"],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "id",
+              "type": "integer",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User successfully fetched"
+            },
+            "401": {
+              "description": "Not authorized to get user"
+            },
+            "500": {
+              "description": "Server error"
+            }
+          },
+          "security": [
+            {
+              "api_key": []
+            }
+          ]
+        }
+      },
+    "/users/{id}": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Get User",
+        "description": "Display user with its validation",
+        "operationId": "GetUser",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User successfully fetched"
+          },
+          "401": {
+            "description": "Not authorized to get user"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "access-token",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "NotificationConfig": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "object",
+          "properties": {
+            "inApp": {
+              "type": "object",
+              "properties": {
+                "articles": {
+                  "type": "object",
+                  "properties": {
+                    "show": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "on": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": ["publish", "comment", "like"]
+                    }
+                  }
+                }
+              }
+            },
+            "email": {
+              "type": "object",
+              "properties": {
+                "articles": {
+                  "type": "object",
+                  "properties": {
+                    "show": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "on": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": ["publish", "comment", "like"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

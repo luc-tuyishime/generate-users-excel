@@ -1,9 +1,5 @@
 export const CREATED = 'created';
 export const SIGN_UP_CREATED = 'User created successfully';
 export const FOUND = 'found';
-export const REMOVED = 'removed';
-export const UPDATED = 'updated';
 export const SIGNED_IN = 'Signed in successfully';
-export const UPLOAD_SUCCESS = 'Upload Successfully'
-
-
+export const UPLOAD_SUCCESS = 'Upload Successfully';

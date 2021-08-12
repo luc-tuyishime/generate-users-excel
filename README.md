@@ -73,6 +73,8 @@ npm test
 
 ## API ENDPOINTS
 
+-   [Base URL](https://rssb-test.herokuapp.com/)
+
 | Ressource URL       | Methods | Description                        |
 | ------------------- | ------- | ---------------------------------- |
 | /                   | GET     | The index (welcome message)        |

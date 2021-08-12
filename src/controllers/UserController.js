@@ -24,8 +24,6 @@ export default class UserController {
         const form = formidable({ multiples: false });
 
         form.parse(req, async (err, fields, files) => {
-            console.log(`files.file.path`, files.file.path);
-
             const result = excelToJson({
                 sourceFile: files.file.path,
                 columnToKey: {
