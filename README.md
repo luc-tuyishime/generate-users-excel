@@ -77,7 +77,7 @@ npm test
 | ------------------- | ------- | ---------------------------------- |
 | /                   | GET     | The index (welcome message)        |
 | /api/v1/auth/signup | POST    | Register a new User                |
-| /api/v2/auth/login  | POST    | Login registered User              |
+| /api/v1/auth/login  | POST    | Login registered User              |
 | /api/v1/upload      | POST    | Upload Excel file and save to DB   |
 | /api/v1/users       | GET     | display the uploaded list with its |
 |                     |         | validation failure for each record |
