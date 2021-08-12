@@ -1,10 +1,13 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
 module.exports = {
     dev: {
-        username: process.env.POSTGRES_DB_NAME,
-        password: process.env.POSTGRES_DB_PASSWORD,
-        database: process.env.POSTGRES_DB_DATABASE,
-        port: process.env.POSTGRES_DB_PORT,
-        host: process.env.POSTGRES_DB_HOST,
+        username: process.env.DB_NAME_DEV,
+        password: process.env.DB_PASSWORD_DEV,
+        database: process.env.DB_DATABASE_DEV,
+        port: process.env.DB_PORT_DEV,
+        host: process.env.DB_HOST_DEV,
         dialect: 'postgres',
         seederStorage: 'sequelize',
     },
@@ -19,11 +22,11 @@ module.exports = {
     },
     production: {
         use_env_variable: 'DATABASE_URL',
-        username: process.env.POSTGRES_DB_USER,
-        password: process.env.POSTGRES_DB_PASSWORD,
-        database: process.env.POSTGRES_DB_DATABASE,
-        host: process.env.POSTGRES_DB_HOST,
-        port: process.env.POSTGRES_DB_PORT,
+        username: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DATABASE,
+        host: process.env.DB_HOST,
+        port: process.env.DB_PORT,
         dialect: 'postgres',
         seederStorage: 'sequelize',
     },
