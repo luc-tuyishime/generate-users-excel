@@ -1,6 +1,6 @@
-import { hashPassword, comparePassword } from "../../utils/password";
+import { hashPassword, comparePassword } from '../../utils/password';
 
-import { Model, DataTypes } from "sequelize";
+import { Model, DataTypes } from 'sequelize';
 
 module.exports = (sequelize) => {
     class Auth extends Model {
@@ -19,58 +19,58 @@ module.exports = (sequelize) => {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
-                type: new DataTypes.INTEGER()
+                type: new DataTypes.INTEGER(),
             },
             firstName: {
                 type: new DataTypes.STRING(),
-                allowNull: false
+                allowNull: false,
             },
             lastName: {
                 type: new DataTypes.STRING(),
-                allowNull: false
+                allowNull: false,
             },
             username: {
                 type: new DataTypes.STRING(),
                 allowNull: false,
-                unique: true
+                unique: true,
             },
             email: {
                 type: new DataTypes.STRING(),
                 allowNull: false,
-                unique: true
+                unique: true,
             },
             phone: {
                 type: new DataTypes.STRING(),
                 allowNull: true,
-                unique: true
+                unique: true,
             },
-            password: { 
+            password: {
                 type: new DataTypes.STRING(),
-                allowNull: true
+                allowNull: false,
             },
             role: {
-                type: new DataTypes.ENUM("normal", "admin"),
+                type: new DataTypes.ENUM('normal', 'admin'),
                 allowNull: false,
-                defaultValue: "normal"
+                defaultValue: 'normal',
             },
             isActive: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
-                defaultValue: true
+                defaultValue: true,
             },
             createdAt: {
                 allowNull: false,
-                type: new DataTypes.DATE()
+                type: new DataTypes.DATE(),
             },
             updatedAt: {
                 allowNull: false,
-                type: new DataTypes.DATE()
-            }
+                type: new DataTypes.DATE(),
+            },
         },
         {
             sequelize,
-            modelName: "Auth",
-            tableName: "auths"
+            modelName: 'Auth',
+            tableName: 'auths',
         }
     );
 
@@ -81,7 +81,10 @@ module.exports = (sequelize) => {
         }
     });
 
-    Auth.prototype.comparePassword = async function compareUserPassword(password) {
+    Auth.prototype.comparePassword = async function compareUserPassword(
+        password
+    ) {
+        console.log(`object`, this.get().password);
         return comparePassword(password, this.get().password);
     };
 

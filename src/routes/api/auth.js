@@ -17,7 +17,7 @@ router.post(
 // Create User
 router.post(
     '/auth/signup',
-    joiValidator(schema.newUser),
+
     errorHandlerAsync(AuthController.create)
 );
 

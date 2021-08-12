@@ -1,6 +1,3 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
 module.exports = {
     dev: {
         username: process.env.DB_NAME_DEV,
