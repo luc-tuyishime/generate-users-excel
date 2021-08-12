@@ -21,25 +21,25 @@ module.exports = (sequelize) => {
             },
             names: {
                 type: new DataTypes.STRING(),
-                allowNull: false,
+                allowNull: true,
             },
             nid: {
                 type: new DataTypes.STRING(),
-                allowNull: false,
+                allowNull: true,
                 unique: true,
             },
             phone: {
                 type: new DataTypes.STRING(),
-                allowNull: false,
+                allowNull: true,
                 unique: true,
             },
             gender: {
                 type: new DataTypes.STRING(),
-                allowNull: false,
+                allowNull: true,
             },
             email: {
                 type: new DataTypes.STRING(),
-                allowNull: false,
+                allowNull: true,
                 unique: true,
             },
             errors: {
