@@ -29,5 +29,9 @@ module.exports = {
         port: process.env.DB_PORT,
         dialect: 'postgres',
         seederStorage: 'sequelize',
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+        },
     },
 };
