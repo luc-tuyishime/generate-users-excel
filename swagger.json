@@ -243,60 +243,7 @@
       "in": "header"
     }
   },
-  "definitions": {
-    "NotificationConfig": {
-      "type": "object",
-      "properties": {
-        "config": {
-          "type": "object",
-          "properties": {
-            "inApp": {
-              "type": "object",
-              "properties": {
-                "articles": {
-                  "type": "object",
-                  "properties": {
-                    "show": {
-                      "type": "boolean",
-                      "example": true
-                    },
-                    "on": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      },
-                      "example": ["publish", "comment", "like"]
-                    }
-                  }
-                }
-              }
-            },
-            "email": {
-              "type": "object",
-              "properties": {
-                "articles": {
-                  "type": "object",
-                  "properties": {
-                    "show": {
-                      "type": "boolean",
-                      "example": true
-                    },
-                    "on": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      },
-                      "example": ["publish", "comment", "like"]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
+ 
   "externalDocs": {
     "description": "Find out more about Swagger",
     "url": "http://swagger.io"
