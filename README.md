@@ -145,11 +145,10 @@ npm test
 
 `Upload Excel file /api/v1/upload (POST)`
 
-```source-json
-{
-    "email": "luctunechi45@gmail.com",
-    "password": "Test123!"
-}
+#### Upload an excel file that contain Names, nid, phone, number, gender, email.
+
+```form-data
+- upload file
 ```
 
 ```Response
