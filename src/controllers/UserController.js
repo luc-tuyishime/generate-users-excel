@@ -31,8 +31,6 @@ export default class UserController {
                 },
             });
 
-            // console.log(`result`, result);
-
             if (result[Object.keys(result)[0]].length === 0) {
                 return res.status(status.HTTP_BAD_REQUEST).json({
                     status: status.HTTP_BAD_REQUEST,
@@ -43,8 +41,6 @@ export default class UserController {
             const users = result[Object.keys(result)[0]];
 
             users.shift();
-
-            // console.log(`users`, users);
 
             users.forEach((user) => {
                 const { error } = schemaValidation.validate(user, {
