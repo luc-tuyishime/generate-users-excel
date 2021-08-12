@@ -1,6 +1,6 @@
 module.exports = {
     dev: {
-        user: process.env.POSTGRES_DB_NAME,
+        username: process.env.POSTGRES_DB_NAME,
         password: process.env.POSTGRES_DB_PASSWORD,
         database: process.env.POSTGRES_DB_DATABASE,
         port: process.env.POSTGRES_DB_PORT,
@@ -9,7 +9,7 @@ module.exports = {
         seederStorage: 'sequelize',
     },
     test: {
-        user: process.env.POSTGRES_DB_USER_TEST,
+        username: process.env.POSTGRES_DB_USER_TEST,
         password: process.env.POSTGRES_DB_PASSWORD_TEST,
         database: process.env.POSTGRES_DB_NAME_TEST,
         host: process.env.POSTGRES_DB_HOST_TEST,
@@ -18,7 +18,7 @@ module.exports = {
         seederStorage: 'sequelize',
     },
     production: {
-        user: process.env.POSTGRES_DB_USER,
+        username: process.env.POSTGRES_DB_USER,
         password: process.env.POSTGRES_DB_PASSWORD,
         database: process.env.POSTGRES_DB_DATABASE,
         host: process.env.POSTGRES_DB_HOST,
