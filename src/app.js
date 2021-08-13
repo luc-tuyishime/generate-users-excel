@@ -1,8 +1,6 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import createError from 'http-errors';
-import swaggerUI from 'swagger-ui-express';
-import swaggerJSdDoc from 'swagger-jsdoc';
 import cors from 'cors';
 import helmet from 'helmet';
 import routes from './routes';
@@ -10,11 +8,8 @@ import {
     HTTP_NOT_FOUND,
     HTTP_SERVER_ERROR,
 } from './constants/httpStatusCodes.js';
-import * as swaggerDocument from '../swagger.json';
 
 const app = express();
-
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use(cors());
 app.use(helmet());
