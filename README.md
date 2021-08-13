@@ -160,35 +160,33 @@ npm test
     "status": 201,
     "message": "Upload Successfully",
     "users": [
-        {
-            "id": 12,
-            "names": "Ij",
-            "nid": "bc6",
-            "phone": "+250784421255",
-            "gender": "Male",
-            "email": "ozo@acelewu.fm",
-            "errors":"
-            {
-              \"names\":\"\\\"Names\\\" length must be at least 3 characters long\",
-              \"nid\":\"\\\"National ID\\\" length must be 36 characters long\"
+       {
+            "id": 2,
+            "names": "Ricardo Cummings",
+            "nid": "d3049cb4-d5ca-57a5-8570-d5744aca6c07",
+            "phone": "(872) 985-3351",
+            "gender": "Ok",
+            "email": "beros@movlef.gl",
+            "errors": "{
+                \"names\":\"\\\"names\\\" length must be less than or equal to 15 characters long\",\"phone\":\"Must be a valid phone number Ex: (+250788888888)\",
+                \"gender\":\"\\\"gender\\\" must be one of [Male, Female]\"
              }",
-            "createdAt": "2021-08-12T22:44:31.696Z",
-            "updatedAt": "2021-08-12T22:44:31.696Z"
+            "createdAt": "2021-08-13T10:50:08.791Z",
+            "updatedAt": "2021-08-13T10:50:08.791Z"
         },
         {
-            "id": 13,
-            "names": "Eleanor Moss",
-            "nid": "52370e51-44bc-5ae8-8ee6-4d1999378cf8",
-            "phone": "(484) 791-9513",
-            "gender": "Ok",
-            "email": "nivupegi@vocicub.ac",
-            "errors":
-              "{
-                  \"phone\":\"Must be a valid phone number Ex: (+250788888888)\",
-                   \"gender\":\"\\\"gender\\\" must be one of [Male, Female]\"
-              }",
-            "createdAt": "2021-08-12T22:44:31.696Z",
-            "updatedAt": "2021-08-12T22:44:31.696Z"
+            "id": 1,
+            "names": "Josephine Dixon",
+            "nid": "759f20a9-0ae1-5f0c-83",
+            "phone": "(227) 722-6765",
+            "gender": "Female",
+            "email": "suzsu",
+            "errors": "{
+                \"nid\":\"\\\"nid\\\" length must be 36 characters long\",\"phone\":\"Must be a valid phone number Ex: (+250788888888)\",
+                \"email\":\"Please provide a valid email address\"
+             }",
+            "createdAt": "2021-08-13T10:50:08.791Z",
+            "updatedAt": "2021-08-13T10:50:08.791Z"
         },
     ]
 }
