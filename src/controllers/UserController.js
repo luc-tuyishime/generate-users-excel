@@ -65,7 +65,6 @@ export default class UserController {
                         status: status.HTTP_CREATED,
                         filename: req?.file?.originalname,
                         message: successMessages.UPLOAD_SUCCESS,
-                        users: data,
                     });
                 })
                 .catch((err) => {
