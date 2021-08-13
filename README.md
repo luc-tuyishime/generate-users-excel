@@ -4,6 +4,10 @@
 
 [Base URL](https://rssb-test.herokuapp.com/)
 
+### Postman Collection
+
+[Collection](https://www.getpostman.com/collections/ac0c423e18a9af59b1f5)
+
 ## Prerequisites
 
 TO setup the project on your local machine do the following
